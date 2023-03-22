@@ -1,4 +1,4 @@
-
+Sehr gut, verpasst sehr viel :D
 Ab nächste woche Montag.
 =======
 <<<<<<< HEAD
