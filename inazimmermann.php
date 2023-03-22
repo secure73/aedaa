@@ -1,1 +1,0 @@
-Wenn eine Wissenschaftler ein Brötchen macht, ist es wissenschaftlich belegt!

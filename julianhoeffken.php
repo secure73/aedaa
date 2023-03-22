@@ -1,4 +1,0 @@
-Huhu.
-Moin!
-Servus!
-Virus!
