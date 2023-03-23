@@ -17,21 +17,12 @@ class CleanCodeConcept {
 
     //functions shall be camelCase
     //function must have clear name 
-<<<<<<< HEAD
     //function name shall declare what it doing!!!!
     //function shall declare its return type
     //function shall have a comment
 
     /**
      * @return int in case of success return last inserted id
-=======
-    //function name shall declear what it doing!!!!
-    //function shall declear its return type
-    //function shall has a comment if it needed
-
-    /**
-     * @return int in case of success retrun last inserted id
->>>>>>> dev
      * @return false if insert is unsuccessfull , return false
      */
     public function createNew():int|false
