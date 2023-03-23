@@ -1,7 +1,7 @@
 <?php include('./template/navbar.php'); ?>
 
 <div class="container pt-3">
-    <h3>DAA AE Wilkommen</h3>
+    <h3>Baustoffe Sokol GmbH</h3>
 </div>
 
 
