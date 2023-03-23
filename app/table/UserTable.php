@@ -1,9 +1,10 @@
-
 <?php
 
 namespace App\Table;
 
-class UserTable {
+class UserTable
+{
+
    public int $id;
    public string $email;
    public string $password;
@@ -11,17 +12,20 @@ class UserTable {
    public bool $isAdmin;
 
    //php class constructor
-   public function addUser(string $email, string $password):int{
-   return 1;   
+   public function addUser(string $email, string $password): int
+   {
+      return 1;
    }
-   public function insertUser(string $email, string $password):int{
-   return 1;   
+   public function insertUser(string $email, string $password): int
+   {
+      return 1;
    }
-   public function deleteUser(string $email, string $password):int{
-   return 1;   
+   public function deleteUser(string $email, string $password): int
+   {
+      return 1;
    }
-   public function update(string $email, string $password):int{
-   return 1;   
+   public function update(string $email, string $password): int
+   {
+      return 1;
    }
-
 }
