@@ -5,7 +5,7 @@ class User {
     public int $id;
     public string $email;
     public string $password;
-    // when we habe boolean type variable, please use "is" before the variableName 
+    // when we have boolean type variable, please use "is" before the variableName 
     public bool $isAdmin;
 
     //php class constructor
