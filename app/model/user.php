@@ -1,11 +1,10 @@
-<?php
+<?php 
 namespace App;
-
-class User {
+class User{
     public int $id;
     public string $email;
-    public string $password;
-    // when we habe boolean type variable, please use "is" before the variableName 
+    public string $password;    
+    //when we have boolean type variable, please use "is" before the variableName
     public bool $isAdmin;
 
     //php class constructor
@@ -15,12 +14,12 @@ class User {
     }
 
     /**
-     * @return int in case of success return last inserted id from creatd User
-     * @return false in case of unseccessfull creation return false
+     * @return int in case of success return last inserted id
+     * @return false in case of unsuccessfull creation return false
      */
-    public function create(string $email , string $password):int|false
+    public function createNewUser(string $email, string $password):int
     {
-        return false;
+        return 1;
     }
 
 
@@ -29,20 +28,19 @@ class User {
         return false;
     }
 
-    public function removeAdmin(string $email):bool
+    public function removeAdmin(string $email): bool
     {
         return false;
     }
     /**
-     * @return User if user existed
-     * @return false if user cannot be found, or email dosent existed in out Database
+     * @return User if user exists
+     * @return false if user cannot be found, or email doesnt exists in our database
      */
-    public function findUserByEmail(string $email):User|false
+    public function findUserbyEmail(string $email):User|false
     {
         return false;
     }
 
-    
     public function login(string $email , string $password):bool
     {
         return false;
@@ -54,16 +52,14 @@ class User {
     }
 
     /**
-     *@return array<User> can ne array of null
-     */	
+     * @return $array<User> can be NULL
+     */
     public function getUsers():array
     {
-        $arrayUsers =[];
+        $arrayUsers = [];
         //code to get all users from database
         return $arrayUsers;
     }
 
-
-
-
 }
+?>
