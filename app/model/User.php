@@ -11,15 +11,16 @@ class User {
     //php class constructor
     public function __construct()
     {
-        
+        return;
     }
 
     /**
      * @return int in case of success return last inserted id from creatd User
      * @return false in case of unseccessfull creation return false
      */
-    public function create(string $email , string $password):int|false
+    public function createUser(string $email , string $password):int|false
     {
+        
         return false;
     }
 
