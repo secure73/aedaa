@@ -12,20 +12,22 @@ class UserTable
    public bool $isAdmin;
 
    //php class constructor
-   public function addUser(string $email, string $password): int
+   
+   public function insert(string $email, string $password): int
    {
       return 1;
    }
-   public function insertUser(string $email, string $password): int
+   public function delete(string $email, string $password): bool
    {
-      return 1;
+      return false;
    }
-   public function deleteUser(string $email, string $password): int
+   public function updatePassword(string $password): bool
    {
-      return 1;
+      return false;
    }
-   public function update(string $email, string $password): int
+
+   public function updateAdmin(bool $isAdmin): bool
    {
-      return 1;
+      return false;
    }
 }
