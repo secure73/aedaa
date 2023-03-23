@@ -1,14 +1,8 @@
 <?php
-
-declare(strict_types=1);
-
-/*
- * This file is part of PHP CS Fixer.
- * (c) Fabien Potencier <fabien@symfony.com>
- *     Dariusz Rumiński <dariusz.ruminski@gmail.com>
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
+/**
+ * By Ali Khorsandfard
  */
+declare(strict_types=1);
 
 namespace Gemvc\Database;
 
@@ -18,12 +12,9 @@ class QueryProvider extends DatabasePdoConnection
      * @if null , use default connection in config.php
      * pass $connection name to parent and create PDO Connection to Execute Query
      */
-    public function __construct(?string $connectionName = null)
+    public function __construct()
     {
-        if (!$connectionName) {
-            $connectionName = DEFAULT_CONNECTION_NAME;
-        }
-        parent::__construct($connectionName);
+        parent::__construct();
     }
 
     /**

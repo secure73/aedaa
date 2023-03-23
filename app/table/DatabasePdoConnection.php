@@ -1,14 +1,8 @@
 <?php
-
-declare(strict_types=1);
-
-/*
- * This file is part of PHP CS Fixer.
- * (c) Fabien Potencier <fabien@symfony.com>
- *     Dariusz Rumiński <dariusz.ruminski@gmail.com>
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
+/**
+ * By Ali Khorsandfard
  */
+declare(strict_types=1);
 
 namespace Gemvc\Database;
 
@@ -29,34 +23,24 @@ class DatabasePdoConnection
     private ?\PDO $db;
     private float $startExecutionTime;
     private float $endExecutionTime;
-    private string $connectionName;
     private ?string $_query;
 
-    /**
-     * @param string $connectionName
-     *                               create new PDO Database connection Instance
-     *                               to assert connection sucess ,$instance->getError();
-     */
-    public function __construct(string $connectionName)
+    private string $dbType = "mysql";
+    private string $dbHost = "localhost";
+    private string $dbName = "myDatabase";
+    private string $dbUsername = "root";
+    private string $dbPassword = "";
+
+    public function __construct()
     {
         $this->startExecutionTime = microtime(true);
         $this->error = null;
         $this->affectedRows = null;
         $this->lastInsertedId = false;
         $this->isConnected = false;
-        $this->connectionName = $connectionName;
         $this->db = null;
         $this->stsment = null;
         $this->_query = null;
-    }
-
-    /**
-     * @return string
-     *                current in use connection
-     */
-    public function getConnectionName(): string
-    {
-        return $this->connectionName;
     }
 
     public function isConnect(): bool
@@ -66,15 +50,14 @@ class DatabasePdoConnection
 
     public function connect(): bool
     {
-        $db_connection_info = DB_CONNECTIONS[$this->connectionName];
-        $dsn__db = $db_connection_info['type'].':host='.$db_connection_info['host'].';dbname='.$db_connection_info['database_name'].';charset=utf8mb4';
+        $dsn__db = $this->dbType.':host='.$this->dbHost.';dbname='.$this->dbName.';charset=utf8mb4';
 
         try {
             $options__db = [
                 \PDO::ATTR_PERSISTENT => true,
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
             ];
-            $this->db = new \PDO($dsn__db, $db_connection_info['username'], $db_connection_info['password'], $options__db);
+            $this->db = new \PDO($dsn__db, $this->dbUsername, $this->dbPassword, $options__db);
             $this->isConnected = true;
         } catch (\PDOException $e) {
             $this->error = $e->getMessage();
@@ -94,8 +77,8 @@ class DatabasePdoConnection
 
     /**
      * @return \PDO
-     *              Database Connection or null in case of error
-     *              in case of null , you can see Error  in created instance : $db->error
+     * Database Connection or null in case of error
+     * in case of null , you can see Error  in created instance : $db->error
      */
     public function db(): \PDO|null
     {
@@ -109,8 +92,8 @@ class DatabasePdoConnection
 
     /**
      * @param string $query
-     *                      convert sql query to PDO Statement trough PDO::prepare()
-     *                      if connect to databse is failed, set error
+     * convert sql query to PDO Statement trough PDO::prepare()
+     * if connect to databse is failed, set error
      */
     public function query(string $query): void
     {
@@ -124,7 +107,7 @@ class DatabasePdoConnection
 
     /**
      * @param mixed $value
-     *                     this method automatically detect value Type and bind Parameter to value
+     * this method automatically detect value Type and bind Parameter to value
      */
     public function bind(string $param, mixed $value): void
     {
