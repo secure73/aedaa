@@ -1,15 +1,9 @@
-<?php 
-echo "index";
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-</head>
-<body>
-    
-</body>
-</html>
+<?php include('./template/navbar.php'); ?>
+
+<div class="container pt-3">
+    <h3>DAA AE Wilkommen</h3>
+</div>
+
+
+
+<?php include('./template/footer.php'); ?>
