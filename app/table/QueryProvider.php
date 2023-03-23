@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Gemvc\Database;
+namespace Table\Database;
 
 class QueryProvider extends DatabasePdoConnection
 {
