@@ -1,5 +1,3 @@
-<?php echo"<h1>Schumi version</1>"; ?>
-
 
 <?php include('./template/navbar.php'); ?>
 
