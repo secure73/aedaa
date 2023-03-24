@@ -17,6 +17,10 @@ class UserTable
    {
       return 1;
    }
+   public function selectByEmail(string $email): int
+   {
+      return 1;
+   }
    public function delete(string $email, string $password): bool
    {
       return false;

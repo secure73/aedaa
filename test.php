@@ -7,10 +7,10 @@ include('./template/navbar.php');
 require_once('./app/table/QueryProvider.php');
 $qp = new QueryProvider();
 
-$sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
-$arrayBind = [':email'=>'myemail@gmail.com',':password'=>'sajhdjadd',':isAdmin'=>true];
+//$sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
+//$arrayBind = [':email'=>'myemail@gmail.com',':password'=>'sajhdjadd',':isAdmin'=>true];
+//$userId = $qp->insertQuery($sqlQuery,$arrayBind);
 
-$userId = $qp->insertQuery($sqlQuery,$arrayBind);
 
 
 ?>
