@@ -1,9 +1,7 @@
+
 <?php include('./template/navbar.php'); ?>
 <br>
-<div clas="container pt-3">
-
-<h3> jetz aber</h3>
-</div>
-
-
+<br>
+<br>
+<h1>jetzt aber</h1>
 <?php include('./template/footer.php'); ?>
