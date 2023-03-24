@@ -21,6 +21,9 @@
         <li class="nav-item">
           <a class="nav-link" href="admin.php">admin</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="shop.php">admin</a>
+        </li>
       </ul>
     </div>
   </div>
