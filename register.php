@@ -1,5 +1,7 @@
 <?php include('./template/navbar.php'); ?>
-
+<br>
+<br>
+<br>
 <h1>Register</h1>
 <div class="card flex m-5 p-5 bg-secondary">
 <form>

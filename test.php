@@ -3,6 +3,8 @@
 
 <?php include('./template/navbar.php'); ?>
 <br>
+<br>
+<br>
 <h1>DAA AE Nadine Stamm</h1>
 <?php include('./template/footer.php'); ?>
 
