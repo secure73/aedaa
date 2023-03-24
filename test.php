@@ -1,9 +1,7 @@
 <?php
 
-use Table\Database\QueryProvider;
-
 include('./template/navbar.php'); 
-
+/*
 require_once('./app/table/QueryProvider.php');
 $qp = new QueryProvider();
 
@@ -21,14 +19,19 @@ $qp = new QueryProvider();
 
 $selectQuery = 'SELECT * FROM users WHERE 1';
 $answerSelectQurey = $qp->selectQuery($selectQuery);
+*/
+use App\Table\UserTable;
 
+require_once('./app/table/UserTable.php');
+$myUser = new UserTable();
+$myUser->insertUser('besterschüler@gmail.com', 'ich bin der beste', false);
 ?>
 
 <div class="container pt-3">
     <h3>DAA AE Ina Zimmermann</h3>
-    <?=var_dump($answerSelectQurey)?>
+   
 </div>
 
 
 
-<?php include('./template/footer.php'); ?>
+<?php include('./template/footer.php'); ?>;
