@@ -4,7 +4,7 @@
     <br>
     <br>
     <br>
-    <h3>Shop</h3>
+    <h3>Nadine Stamm</h3>
 </div>
 
 

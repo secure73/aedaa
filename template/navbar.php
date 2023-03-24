@@ -22,6 +22,8 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="shop.php">shop</a>
+          <li class="nav-item">
+          <a class="nav-link" href="nadineStamm.php">Über mich</a>
         </li>
         </li>
       </ul>
