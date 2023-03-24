@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 
 namespace App\Table;
@@ -33,4 +31,3 @@ class UserTable
       return false;
    }
 }
->>>>>>> dev
