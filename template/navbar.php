@@ -19,7 +19,10 @@
         <a class="nav-link active" aria-current="page" href="test.php">Test</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="admin.php">admin</a>
+        <a class="nav-link active" aria-current="page" href="admin.php">Admin</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="shop.php">Shop</a>
       </ul>
     </div>
   </div>
