@@ -4,7 +4,7 @@
 
 <div class="container pt-3">
 
-<h1>Schumi version</h1>
+<h1>Test</h1>
 </div>
 
 
