@@ -7,11 +7,17 @@ include('./template/navbar.php');
 require_once('./app/table/QueryProvider.php');
 $qp = new QueryProvider();
 
-$sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
-$arrayBind = [':email'=>'myemail@gmail.com',':password'=>'sajhdjadd',':isAdmin'=>true];
+//$sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
+//$arrayBind = [':email'=>'deneme@gmail.com',':password'=>'12345',':isAdmin'=>true];
 
-$userId = $qp->insertQuery($sqlQuery,$arrayBind);
+//$userId = $qp->insertQuery($sqlQuery,$arrayBind);
 
+//$updateQuery= 'UPDATE users SET email= :email, password = :password, isAdmin= :isAdmin WHERE id= :id';
+//$arrayUpdateBinValue = [':email'=>'newEmail@gmail.com', ':password' => '123456', ':isAdmin'=>false, ':id'=>1];
+//$qp->updateQuery($updateQuery, $arrayUpdateBinValue);
+
+$selectQuery = 'SELECT * FROM users WHERE 1';
+$answerSelectQuerey = $qp->selectQuery($selectQuery);
 
 ?>
 
