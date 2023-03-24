@@ -16,28 +16,16 @@
           <a class="nav-link" href="login.php">login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="test.php">test</a>
-<<<<<<< HEAD
+          <a class="nav-link" href="shop.php">Shop</a>
         </li>
         <li class="nav-item">
-=======
-          <li class="nav-item">
->>>>>>> origin/dev
-          <a class="nav-link" href="admin.php">admin</a>
+          <a class="nav-link" href="test.php">Schumi Test</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="shop.php">shop</a>
+          <a class="nav-link" href="admin.php">Admin</a>
         </li>
-<<<<<<< HEAD
-=======
-        </li>
->>>>>>> origin/dev
       </ul>
     </div>
   </div>
 </nav>
 <div class="pt-5">
-
-
-
-
