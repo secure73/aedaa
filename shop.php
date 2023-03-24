@@ -4,6 +4,6 @@
 <br>
 <br>
 <br>
-<h1>Welcome Admin</h1>
+<h1>Jetzt können Sie shoppen!</h1>
 
 <?php include('./template/footer.php'); ?>
