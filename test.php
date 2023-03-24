@@ -19,7 +19,7 @@ $qp = new QueryProvider();
 //$arrayBindDelete = [':id'=>3];
 //$qp->deleteQuery($deleteQuery,$arrayBindDelete);
 
-$selectQuery = 'SELECT * FROM users WHERE 1';
+//$selectQuery = 'SELECT * FROM users WHERE 1';
 $answerSelectQurey = $qp->selectQuery($selectQuery);
 
 ?>
