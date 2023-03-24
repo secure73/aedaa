@@ -10,13 +10,16 @@
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="register.php">register</a>
+          <a class="nav-link" href="register.php">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login.php">login</a>
+          <a class="nav-link" href="login.php">Login</a>
         </li>
-        li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="test.php">TEST ALI</a>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="test.php">Test</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="admin.php">admin</a>
       </ul>
     </div>
   </div>
