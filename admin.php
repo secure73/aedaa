@@ -6,5 +6,5 @@
 <br>
 <br>
 <br>
-<h1>Welcome Admin</h1>
+<div><h1>Welcome Admin</h1></div>
 <?php include('./template/footer.php'); ?>
