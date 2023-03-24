@@ -1,7 +1,23 @@
-<?php include('./template/navbar.php'); ?>
+<?php 
+
+use Table\Database\QueryProvider;
+
+include('./template/navbar.php'); 
+
+require_once('./app/table/QueryProvider.php');
+
+$qp = new QueryProvider();
+
+$sqlQuery = "";
+
+
+
+
+?>
 
 <div class="container pt-3">
     <h3>DAA AE Erik Koop</h3>
+  
 </div>
 
 
