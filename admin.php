@@ -1,9 +1,6 @@
-
+<?php include('./template/head.php'); ?>
 <?php include('./template/navbar.php'); ?>
 <br>
-<br>
-<br>
-<h1>jetzt aber</h1>
-<br>
+<h1>Version: Admin</h1>
 <br>
 <?php include('./template/footer.php'); ?>
