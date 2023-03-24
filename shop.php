@@ -1,7 +1,7 @@
 <?php include('./template/navbar.php'); ?>
 
 <div class="container pt-3">
-    <h3>Willkommen Shop</h3>
+    <h3>Shop</h3>
 </div>
 
 
