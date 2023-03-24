@@ -15,6 +15,8 @@
         <li class="nav-item">
           <a class="nav-link" href="login.php">login</a>
         </li>
+        li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="test.php">TEST ALI</a>
       </ul>
     </div>
   </div>
