@@ -1,23 +1,23 @@
-<?php 
+<?php
 
 use Table\Database\QueryProvider;
 
 include('./template/navbar.php'); 
 
 require_once('./app/table/QueryProvider.php');
-
 $qp = new QueryProvider();
 
-$sqlQuery = "";
+$sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
+$arrayBind = [':email'=>'myemail@gmail.com',':password'=>'sajhdjadd',':isAdmin'=>true];
 
-$sqlQuery = 'INSERT INTO'
+$userId = $qp->insertQuery($sqlQuery,$arrayBind);
 
 
 ?>
 
 <div class="container pt-3">
-    <h3>DAA AE Erik Koop</h3>
-  
+    <h3>DAA AE Ina Zimmermann</h3>
+    <?=var_dump($qp->getError())?>
 </div>
 
 
