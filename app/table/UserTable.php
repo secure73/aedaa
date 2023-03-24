@@ -1,25 +1,31 @@
 <?php
 
 namespace App\Table;
+use Table\Database\QueryProvider;
+require_once('./app/table/QueryProvider.php');
 
-// create 
-//add / delete / insert / update functions
-//work on database
 
-class UserTable
+class UserTable extends QueryProvider
 {
 
    public int $id;
    public string $email;
    public string $password;
    // when we have boolean var, please use "is" before variable
-   public bool $isAdmin;
+   public bool $isAdmin = false;
 
    //php class constructor
    
-   public function insert(string $email, string $password): int
+   public function __construct()
    {
-      return 1;
+      parent::__construct();
+   }
+
+   public function insertUser(string $email, string $password, bool $isAdmin):int|null
+   {
+      $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email, :password, :isAdmin)';
+      $arrayBind = [':email'=>$email,':password'=> $password,':isAdmin'=> $isAdmin];
+      return $this->insertQuery($sqlQuery,$arrayBind);
    }
    public function delete(string $email, string $password): bool
    {
