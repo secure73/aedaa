@@ -10,7 +10,7 @@ $qp = new QueryProvider();
 
 $sqlQuery = "";
 
-
+$sqlQuery = 'INSERT INTO'
 
 
 ?>
