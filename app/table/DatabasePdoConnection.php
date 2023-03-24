@@ -27,7 +27,7 @@ class DatabasePdoConnection
 
     private string $dbType = "mysql";
     private string $dbHost = "localhost";
-    private string $dbName = "myDatabase";
+    private string $dbName = "aedaa";
     private string $dbUsername = "root";
     private string $dbPassword = "";
 
