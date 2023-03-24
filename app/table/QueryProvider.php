@@ -2,9 +2,10 @@
 /**
  * By Ali Khorsandfard
  */
-declare(strict_types=1);
-
+//declare(strict_types=1);
 namespace Table\Database;
+require_once('DatabasePdoConnection.php');
+
 
 class QueryProvider extends DatabasePdoConnection
 {
