@@ -15,7 +15,7 @@ class UserTable
    
    public function insert(string $email, string $password): int
    {
-      return 1;
+      return 1; 
    }
    public function delete(string $email, string $password): bool
    {
