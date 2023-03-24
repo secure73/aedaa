@@ -1,5 +1,8 @@
-<?php include('./template/navbar.php');
+<?php 
 
+use Table\Database\DatabasePdoConnection;
+
+include('./template/navbar.php');
 require_once('./app/table/DatabasePdoConnection.php');
 
 $connection = new DatabasePdoConnection();
