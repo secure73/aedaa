@@ -1,7 +1,7 @@
 <?php include('./template/navbar.php'); ?>
 
 <div class="container pt-3">
-    <h1>Baustoffe Sokol GmbH</h1>
+    <h3>Welcome Admin</h3>
 </div>
 
 
