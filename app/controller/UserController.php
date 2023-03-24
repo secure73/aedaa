@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+<<<<<<< HEAD
 
 class UserController {
 
@@ -19,3 +20,9 @@ class UserController {
 }
 
 ?>
+=======
+class UserController {
+
+   
+}
+>>>>>>> origin/dev

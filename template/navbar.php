@@ -17,13 +17,21 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="test.php">test</a>
+<<<<<<< HEAD
         </li>
         <li class="nav-item">
+=======
+          <li class="nav-item">
+>>>>>>> origin/dev
           <a class="nav-link" href="admin.php">admin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="shop.php">shop</a>
         </li>
+<<<<<<< HEAD
+=======
+        </li>
+>>>>>>> origin/dev
       </ul>
     </div>
   </div>
