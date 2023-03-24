@@ -16,7 +16,13 @@
           <a class="nav-link" href="login.php">login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="test.php">Admin</a>
+          <a class="nav-link" href="test.php">test</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="admin.php">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="shop.php">Shop</a>
         </li>
       </ul>
     </div>
