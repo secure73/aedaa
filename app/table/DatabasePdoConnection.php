@@ -49,7 +49,7 @@ class DatabasePdoConnection
     public function connect(): bool
     {
         $dsn__db = $this->dbType.':host='.$this->dbHost.';dbname='.$this->dbName.';charset=utf8mb4';
-
+        "mysql:host=localhost;dbname=aedaa;charset=utf8mb4";
         try {
             $options__db = [
                 \PDO::ATTR_PERSISTENT => true,
