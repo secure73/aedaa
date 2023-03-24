@@ -1,7 +1,9 @@
 <?php include('./template/navbar.php'); ?>
-<div class="m-3">
+<br>
+<br>
+<br>
 <h1>Login</h1>
-<div class="card flex m-5 p-5 bg-secondary bg-opacity-10">
+<div class="card flex m-5 p-5 bg-secondary">
 <form action="" class="">
 <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
@@ -15,5 +17,6 @@
   <br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </div>
-</div>
+
+
 <?php include('./template/footer.php'); ?>
