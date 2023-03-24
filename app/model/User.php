@@ -19,17 +19,17 @@ class User
 *return falsw in case of unsuccess
 **/
 public function create(string $email, string $password): int
-{
+{  
     return 1;
 }
 
 public function makeUserAdmin(string $email): bool
-{
+{    
     return false;
 }
 
 public function removeAdmin(string $email): bool
-{
+{    
     return false;
 }
 

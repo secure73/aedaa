@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Table;
+use Table\Database\QueryProvider;
 
 class UserTable
 {
@@ -13,21 +14,45 @@ class UserTable
 
    //php class constructor
    
-   public function insert(string $email, string $password): int
+   public function insert(string $email, string $password)
    {
-      return 1;
-   }
-   public function delete(string $email, string $password): bool
-   {
-      return false;
-   }
-   public function updatePassword(string $password): bool
-   {
-      return false;
+      require_once('./app/table/QueryProvider.php');
+      $qp = new QueryProvider();
+      $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
+      $arrayBind = [':email'=> $email,':password'=>$password,':isAdmin'=>false];
+      $userId = $qp->insertQuery($sqlQuery,$arrayBind);
+      
    }
 
-   public function updateAdmin(bool $isAdmin): bool
+   public function delete(string $email, string $password): bool
    {
-      return false;
+      // if user mit email und password existieren
+      
+      require_once('./app/table/QueryProvider.php');
+      $qp = new QueryProvider();
+      $deleteQuery = 'DELETE FROM users WHERE email = :email && password = :password';
+      $arrayBindDelete = [':email'=>$email, ':password'=>$password];
+      $qp->deleteQuery($deleteQuery,$arrayBindDelete);
+      return true;
+   }
+
+   public function updatePassword(string $email,string $password)
+   {      
+    require_once('./app/table/QueryProvider.php');
+    $qp = new QueryProvider();
+    $updateQuery = 'UPDATE users SET password = :password WHERE email = :email';    
+    $arrayUpdateBindValue = [':password' => $password, ':email' => $email];
+    $qp->updateQuery($updateQuery,$arrayUpdateBindValue);   
+      
+   }
+
+   public function updateAdmin(string $email, bool $isAdmin)
+      {
+      require_once('./app/table/QueryProvider.php');
+      $qp = new QueryProvider();
+      $updateQuery = 'UPDATE users SET isAdmin = :isAdmin WHERE email = :email';
+      $arrayUpdateBindValue = [':email'=> $email , ':isAdmin' => $isAdmin];
+      $qp->updateQuery($updateQuery,$arrayUpdateBindValue);
+      
    }
 }
