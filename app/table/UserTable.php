@@ -2,8 +2,9 @@
 
 namespace App\Table;
 use Table\Database\QueryProvider;
+require_once('./app/table/QueryProvider.php');
 
-class UserTable
+class UserTable extends QueryProvider
 {
 
    public int $id;
@@ -27,7 +28,7 @@ class UserTable
    public function delete(string $email, string $password): bool
    {
       // if user mit email und password existieren
-      
+
       require_once('./app/table/QueryProvider.php');
       $qp = new QueryProvider();
       $deleteQuery = 'DELETE FROM users WHERE email = :email && password = :password';
