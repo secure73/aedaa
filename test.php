@@ -16,7 +16,7 @@ $qp = new QueryProvider();
 //$qp->updateQuery($updateQuery,$arrayUpdateBindValue);
 
 //$deleteQuery = 'DELETE FROM users WHERE id = :id';
-//$arrayBindDelete = [':id'=>3];
+//$arrayBindDelete = [':id'=>1];
 //$qp->deleteQuery($deleteQuery,$arrayBindDelete);
 
 $selectQuery = 'SELECT * FROM users WHERE 1';
