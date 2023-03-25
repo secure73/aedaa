@@ -23,12 +23,15 @@ $answerSelectQurey = $qp->selectQuery($selectQuery);
 use App\Table\UserTable;
 
 require_once('./app/table/UserTable.php');
-$myUser = new UserTable();
-$myUser->insertUser('besterschüler@gmail.com', 'ich bin der beste', false);
+//$myUser = new UserTable();
+//$myUser->insert('ahmet2@gmail.com', 'aa11', false);
+//$myUser->updatePassword('12345', 14);
+//$myUser->delete(14);
+//$myUser->updateAdmin(14, false);
 ?>
 
 <div class="container pt-3">
-    <h3>DAA AE Ina Zimmermann</h3>
+    <h3>DAA Ahmet Yildirim</h3>
    
 </div>
 

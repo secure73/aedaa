@@ -16,22 +16,13 @@
           <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="test.php">Test</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="admin.php">Admin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="shop.php">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="test.php">test</a>
-          <li class="nav-item">
-          <a class="nav-link" href="admin.php">admin</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="shop.php">shop</a>
-        </li>
+          <a class="nav-link" href="test.php">Test</a>
         </li>
       </ul>
     </div>

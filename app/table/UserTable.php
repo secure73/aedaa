@@ -20,24 +20,36 @@ class UserTable extends QueryProvider
       parent::__construct();
    }
    
-   public function insertUser(string $email, string $password, bool $isAdmin):int|null
+   public function insert(string $email, string $password, bool $isAdmin):int|null
    {
       $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email, :password, :isAdmin)';
       $arrayBind = [':email'=>$email,':password'=> $password,':isAdmin'=> $isAdmin];
       return $this->insertQuery($sqlQuery,$arrayBind);
    }
 
-   public function delete(string $email, string $password): bool
+   public function delete(int $id): bool
    {
+      $deleteQuery = 'DELETE FROM users WHERE id = :id';
+      $arrayBindDelete = [':id'=>$id];
+      $this->deleteQuery($deleteQuery,$arrayBindDelete);
       return false;
    }
-   public function updatePassword(string $password): bool
+   
+   public function updatePassword(string $password, int $id): bool
    {
-      return false;
+   $updateQuery = 'UPDATE users SET password = :password WHERE id = :id';
+   $arrayUpdateBindValue = [':password'=> $password, ':id'=>$id];
+   $this->updateQuery($updateQuery,$arrayUpdateBindValue);
+   return false;
+      
    }
 
-   public function updateAdmin(bool $isAdmin): bool
+   public function updateAdmin(int $id, bool $isAdmin): bool
    {
+      $updateQuery = 'UPDATE users SET isAdmin =:isAdmin WHERE id = :id';
+      $arrayBindUpdate = [':isAdmin'=> $isAdmin,':id'=>$id];
+      $this->deleteQuery($updateQuery,$arrayBindUpdate);
       return false;
+      
    }
 }
