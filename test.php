@@ -23,7 +23,7 @@ $answerSelectQurey = $qp->selectQuery($selectQuery);
 use App\Table\UserTable;
 
 require_once('./app/table/UserTable.php');
-//$myUser = new UserTable();
+$myUser = new UserTable();
 //$myUser->insert('ahmet2@gmail.com', 'aa11', false);
 //$myUser->updatePassword('12345', 14);
 //$myUser->delete(14);
