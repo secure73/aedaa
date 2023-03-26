@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Table;
+use Table\Database\QueryProvider;
+require_once('./app/table/QueryProvider.php');
+
 
 class UserTable
 {
@@ -13,45 +16,38 @@ class UserTable
 
    //php class constructor
    
-   public function insert(string $email, string $password)
+  
+
+
+
+   public function insert(string $email, string $password, bool $isAdmin):int|null
    {
-      require_once('./app/table/QueryProvider.php');
-      $qp = new QueryProvider();
-      $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
-      $arrayBind = [':email'=> $email,':password'=>$password,':isAdmin'=>false];
-      $userId = $qp->insertQuery($sqlQuery,$arrayBind);
+    
+      $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email, :password, :isAdmin)';
+      $arrayEmail = [':email'=>$email,':password'=> $password,':isAdmin'=> $isAdmin];
+      return 1;
+   }
+
+   public function delete(int $id): bool
+   {
+      $deleteQuery = 'DELETE FROM users WHERE id = :id';
+      $arrayEmailDelete = [':id'=>$id];
+      return false;
+   }
+   
+   public function updatePassword(string $password, int $id): bool
+   {
+   $updateQuery = 'UPDATE users SET password = :password WHERE id = :id';
+   $arrayUpdatePassValue = [':password'=> $password, ':id'=>$id];
+   return false;
       
    }
 
-   public function delete(string $email, string $password): bool
+   public function updateAdmin(int $id, bool $isAdmin): bool
    {
-      // if user mit email und password existieren
-
-      require_once('./app/table/QueryProvider.php');
-      $qp = new QueryProvider();
-      $deleteQuery = 'DELETE FROM users WHERE email = :email && password = :password';
-      $arrayBindDelete = [':email'=>$email, ':password'=>$password];
-      $qp->deleteQuery($deleteQuery,$arrayBindDelete);
-      return true;
-   }
-
-   public function updatePassword(string $email,string $password)
-   {      
-    require_once('./app/table/QueryProvider.php');
-    $qp = new QueryProvider();
-    $updateQuery = 'UPDATE users SET password = :password WHERE email = :email';    
-    $arrayUpdateBindValue = [':password' => $password, ':email' => $email];
-    $qp->updateQuery($updateQuery,$arrayUpdateBindValue);   
-      
-   }
-
-   public function updateAdmin(string $email, bool $isAdmin)
-      {
-      require_once('./app/table/QueryProvider.php');
-      $qp = new QueryProvider();
-      $updateQuery = 'UPDATE users SET isAdmin = :isAdmin WHERE email = :email';
-      $arrayUpdateBindValue = [':email'=> $email , ':isAdmin' => $isAdmin];
-      $qp->updateQuery($updateQuery,$arrayUpdateBindValue);
+      $updateQuery = 'UPDATE users SET isAdmin =:isAdmin WHERE id = :id';
+      $arrayPassSSSUpdate = [':isAdmin'=> $isAdmin,':id'=>$id];
+      return false;
       
    }
 }
