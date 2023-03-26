@@ -4,8 +4,7 @@ namespace App\Table;
 use Table\Database\QueryProvider;
 require_once('./app/table/QueryProvider.php');
 
-
-class UserTable
+class UserTable extends QueryProvider
 {
 
    public int $id;
@@ -15,30 +14,32 @@ class UserTable
    public bool $isAdmin;
 
    //php class constructor
+
+   public function __construct()
+   {
+      parent::__construct();
+   }
    
-  
-
-
-
    public function insert(string $email, string $password, bool $isAdmin):int|null
    {
-    
       $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email, :password, :isAdmin)';
-      $arrayEmail = [':email'=>$email,':password'=> $password,':isAdmin'=> $isAdmin];
-      return 1;
+      $arrayBind = [':email'=>$email,':password'=> $password,':isAdmin'=> $isAdmin];
+      return $this->insertQuery($sqlQuery,$arrayBind);
    }
 
    public function delete(int $id): bool
    {
       $deleteQuery = 'DELETE FROM users WHERE id = :id';
-      $arrayEmailDelete = [':id'=>$id];
+      $arrayBindDelete = [':id'=>$id];
+      $this->deleteQuery($deleteQuery,$arrayBindDelete);
       return false;
    }
    
    public function updatePassword(string $password, int $id): bool
    {
    $updateQuery = 'UPDATE users SET password = :password WHERE id = :id';
-   $arrayUpdatePassValue = [':password'=> $password, ':id'=>$id];
+   $arrayUpdateBindValue = [':password'=> $password, ':id'=>$id];
+   $this->updateQuery($updateQuery,$arrayUpdateBindValue);
    return false;
       
    }
@@ -46,7 +47,8 @@ class UserTable
    public function updateAdmin(int $id, bool $isAdmin): bool
    {
       $updateQuery = 'UPDATE users SET isAdmin =:isAdmin WHERE id = :id';
-      $arrayPassSSSUpdate = [':isAdmin'=> $isAdmin,':id'=>$id];
+      $arrayBindUpdate = [':isAdmin'=> $isAdmin,':id'=>$id];
+      $this->deleteQuery($updateQuery,$arrayBindUpdate);
       return false;
       
    }
