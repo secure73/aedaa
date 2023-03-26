@@ -15,19 +15,23 @@ class UserTable
    
    public function insert(string $email, string $password): int
    {
+      $this->email = $email && $this->password = $password;
       return 1;
    }
    public function delete(string $email, string $password): bool
    {
+      $this->email = $email && $this->password = $password;
       return false;
    }
    public function updatePassword(string $password): bool
    {
+      $this->password = $password;
       return false;
    }
 
    public function updateAdmin(bool $isAdmin): bool
    {
+      $this->isAdmin = $isAdmin;
       return false;
    }
 }
