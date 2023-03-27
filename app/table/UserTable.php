@@ -15,10 +15,10 @@ class UserTable
 
    //php class constructor
    
-   public function insert(string $email, string $password): int
+   public function insert(string $email, string $password, bool $isAdmin): int
    {require_once('./app/table/QueryProvider.php');
       $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
-      $arrayBind = [':email'=>'myemail@gmail.com',':password'=>'sajhdjadd',':isAdmin'=>true];
+      $arrayBind = [':email'=>$email,':password'=>$password,':isAdmin'=>$isAdmin];
       $userId = $qp->insertQuery($sqlQuery,$arrayBind);
 
       return 1;
@@ -26,22 +26,22 @@ class UserTable
    public function selectByEmail(string $email): int
    { $qp = new QueryProvider();
        $selectQuery = 'SELECT FROM users WHERE id = :id';
-      $arrayBinSelect = [':email'=>'myemail@gmail.com'];
+      $arrayBinSelect = [':email'=>$email];
       $qp->selectQuery($selectQuery,$arrayBinSelect);
 
       return 1;
    }
-   public function delete(string $email, string $password): bool
+   public function delete(int $id, ): bool
    { $qp = new QueryProvider();
-      $deleteQuery = 'DELETE FROM users WHERE id = :id';
-      $arrayBindDelete = [':id'=>3];   
+      $deleteQuery = 'DELETE FROM users WHERE id = :$id';
+      $arrayBindDelete = [$id];   
       $qp->deleteQuery($deleteQuery,$arrayBindDelete);
       return false;
    }
-   public function updatePassword(string $password): bool
+   public function updatePassword(string $email,string $password): bool
    {  $qp = new QueryProvider();
-      $updateQuery = 'UPDATE users SET email= :email , password = :password , isAdmin= :isAdmin WHERE id = :id';
-      $arrayUpdateBindValue = [':email'=>'newEmail@gmail.com' , ':password' => 'ewpass' , ':isAdmin' => false , ':id'=>1];
+      $updateQuery = 'UPDATE users SET password = :password WHERE email= :email';
+      $arrayUpdateBindValue = [':email'=>$email, ':password' => $password];
       $qp->updateQuery($updateQuery,$arrayUpdateBindValue);
       
       return false;
