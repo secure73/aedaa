@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use App\Table\UserTable;
 
@@ -11,6 +11,15 @@ class User extends UserTable
     //php class constructor
     public function __construct()
     {
+        parent::__construct();
+    }
+
+
+public function register(string $email, string $password): int|null
+{
+    $password = $this->hashPassword($password);
+    return $this->insert($email, $password, false);
+}
         parent::__construct();
     }
 
@@ -58,4 +67,25 @@ public function getUsers(): array
     //code to get all users from database
     return $arrayUsers;
 }
+
+
+private function hashPassword($password): string
+{
+    $options = [
+      'memory_cost' => 2048,
+      'time_cost' => 4,
+      'threads' => 2
+    ];
+    $hash = password_hash($password, PASSWORD_ARGON2ID, $options);
+    return $hash;
+}
+
+  private function verifyPassword(string $password, string $hash): bool
+  {
+      if (password_verify($password, $hash)) {
+          return true;
+      } else {
+          return false;
+      }
+  }
 }
