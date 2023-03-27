@@ -40,7 +40,7 @@ class UserTable extends QueryProvider
       return null;
    }
    
-   public function insert(string $email, string $password , bool $isAdmin = false):int|null
+   protected function insert(string $email, string $password , bool $isAdmin = false):int|null
    {
       $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
       $arrayBind = [':email'=> $email,':password'=>$password,':isAdmin'=>$isAdmin];
