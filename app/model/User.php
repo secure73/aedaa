@@ -1,8 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Model;
+use App\Table\UserTable;
 
-class User
+class User extends from UserTable
 {
     public int $id;
     public string $email;
@@ -13,6 +14,7 @@ class User
     //php class constructor
     public function __construct()
     {
+        parent::__construct();
     }
 
 /**return int in case of success
