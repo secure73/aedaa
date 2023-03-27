@@ -22,12 +22,22 @@ class UserTable extends QueryProvider
       parent::__construct();
    }
 
-
-   public function selectByEmail(string $email)
+   /**
+    * @return UserTable if email existed in DB
+    * @return null if email does not existed in DB or connection failure 
+    */
+   public function selectByEmail(string $email):UserTable|null
    {
       $sqlQuery = 'SELECT * FROM users WHERE email = :email';
       $arrayBind = [':email'=>$email];
-      return $this->selectQuery($sqlQuery,$arrayBind);
+      $result = $this->selectQuery($sqlQuery,$arrayBind);
+      if(isset($result[0]))
+      {
+         $this->convertSelectResultToObject($result[0]);
+         return $this;
+      }
+      echo "user with this email dosent exists";
+      return null;
    }
    
    public function insert(string $email, string $password , bool $isAdmin = false):int|null
@@ -57,4 +67,17 @@ class UserTable extends QueryProvider
       $arrayUpdateBindValue = [':email'=> $email , ':isAdmin' => $isAdmin];
        return $this->updateQuery($updateQuery,$arrayUpdateBindValue);
    }
+
+
+   private function convertSelectResultToObject(array $tableRow)
+   {
+      if(is_array($tableRow))
+      {
+         $this->id = $tableRow['id'];
+         $this->email = $tableRow['email'];
+         $this->password = $tableRow['password'];
+         $this->isAdmin = $tableRow['isAdmin'];
+      }
+   }
+
 }

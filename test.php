@@ -27,12 +27,14 @@ use App\Table\UserTable;
 require_once('./app/table/UserTable.php');
 
 $myUser = new UserTable();
-$myUser->insert('deinemail@gmail.com', 'abcde');
+$result = $myUser->selectByEmail('newEmail@gmail.com');
 
 ?>
 
 <div class="container pt-3">
-    <h3>DAA AE Ina Zimmermann</h3>    
+    <h3>DAA AE Ina Zimmermann</h3> 
+    
+    <?=var_dump($result)?>
 </div>
 
 

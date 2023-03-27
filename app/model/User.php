@@ -2,17 +2,16 @@
 
 namespace App;
 
-class User
-{
-    public int $id;
-    public string $email;
-    public string $password;
-    // when we have boolean var, please use "is" before variable
-    public bool $isAdmin;
+use App\Table\UserTable;
 
+require_once('./app/table/UserTable.php');
+
+class User extends UserTable
+{
     //php class constructor
     public function __construct()
     {
+        parent::__construct();
     }
 
 /**return int in case of success
