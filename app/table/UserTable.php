@@ -1,6 +1,6 @@
 <?php
 /*
-By Erik Koop
+* By Stefan Schumacher
 */
 namespace App\Table;
 use Table\Database\QueryProvider;
@@ -21,36 +21,63 @@ class UserTable extends QueryProvider
    {
       parent::__construct();
    }
-   
-   public function insert(string $email, string $password, bool $isAdmin):int|null
+
+   /**
+    * @return UserTable if email existed in DB
+    * @return null if email does not existed in DB or connection failure 
+    */
+   public function selectByEmail(string $email):UserTable|null
    {
-      $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email, :password, :isAdmin)';
-      $arrayBind = [':email'=>$email,':password'=> $password,':isAdmin'=> $isAdmin];
+      $sqlQuery = 'SELECT * FROM users WHERE email = :email';
+      $arrayBind = [':email'=>$email];
+      $result = $this->selectQuery($sqlQuery,$arrayBind);
+      if(isset($result[0]))
+      {
+         $this->convertSelectResultToObject($result[0]);
+         return $this;
+      }
+      echo "user with this email dosent exists";
+      return null;
+   }
+   
+   public function insert(string $email, string $password , bool $isAdmin = false):int|null
+   {
+      $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
+      $arrayBind = [':email'=> $email,':password'=>$password,':isAdmin'=>$isAdmin];
       return $this->insertQuery($sqlQuery,$arrayBind);
    }
 
-   public function delete(int $id): bool
+   public function deleteById(int $id): int|null
    {
       $deleteQuery = 'DELETE FROM users WHERE id = :id';
       $arrayBindDelete = [':id'=>$id];
-      $this->deleteQuery($deleteQuery,$arrayBindDelete);
-      return false;
-   }
-   
-   public function updatePassword(string $password, int $id): bool
-   {
-   $updateQuery = 'UPDATE users SET password = :password WHERE id = :id';
-   $arrayUpdateBindValue = [':password'=> $password, ':id'=>$id];
-   $this->updateQuery($updateQuery,$arrayUpdateBindValue);
-   return false;   
+      return $this->deleteQuery($deleteQuery,$arrayBindDelete);
    }
 
-   public function updateAdmin(int $id, bool $isAdmin): bool
-   {
-      $updateQuery = 'UPDATE users SET isAdmin =:isAdmin WHERE id = :id';
-      $arrayBindUpdate = [':isAdmin'=> $isAdmin,':id'=>$id];
-      $this->deleteQuery($updateQuery,$arrayBindUpdate);
-      return false;
-      
+   public function updatePasswordByEmail(string $email,string $password):int|null
+   {      
+    $updateQuery = 'UPDATE users SET password = :password WHERE email = :email';    
+    $arrayUpdateBindValue = [':password' => $password, ':email' => $email];
+    return $this->updateQuery($updateQuery,$arrayUpdateBindValue); 
    }
+
+   public function updateAdminStatusByEmail(string $email, bool $isAdmin):int|null
+      {
+      $updateQuery = 'UPDATE users SET isAdmin = :isAdmin WHERE email = :email';
+      $arrayUpdateBindValue = [':email'=> $email , ':isAdmin' => $isAdmin];
+       return $this->updateQuery($updateQuery,$arrayUpdateBindValue);
+   }
+
+
+   private function convertSelectResultToObject(array $tableRow)
+   {
+      if(is_array($tableRow))
+      {
+         $this->id = $tableRow['id'];
+         $this->email = $tableRow['email'];
+         $this->password = $tableRow['password'];
+         $this->isAdmin = $tableRow['isAdmin'];
+      }
+   }
+
 }

@@ -1,16 +1,22 @@
-<?php include('./template/navbar.php'); ?>
-
+<?php
+include('./template/navbar.php'); 
+require_once('./app/controller/RegisterController.php');
+if(isset($_POST))
+{
+  var_dump($_POST);
+}
+?>
 <h1>Register</h1>
 <div class="card flex m-5 p-5 bg-secondary">
-<form>
+<form method='get' target="self">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
 
   <br>

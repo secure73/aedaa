@@ -24,10 +24,18 @@ $myUser = new UserTable();
 //$myUser->updatePassword('12345', 14);
 //$myUser->delete(14);
 //$myUser->updateAdmin(14, false);
-?>
 
+require_once('./app/table/QueryProvider.php');
+
+$myUser = new UserTable();
+$result = $myUser->selectByEmail('newEmail@gemail.com')
+
+
+?>
 <div class="container pt-3">
     <h3>DAA Erik Koop</h3>
+
+    <?= var_dump($myUser)?>
    
 </div>
 
