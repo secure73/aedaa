@@ -48,7 +48,7 @@ class DatabasePdoConnection
 
     public function connect(): bool
     {
-        $dsn__db = $this->dbType.':host='.$this->dbHost.';dbname='.$this->dbName.';charset=utf8mb4';
+        $dsn__db = $this->dbType.':host='.$this->dbHost.';dbname='.$this->dbName.';charset=utf8mb4;port=3308';
 
         try {
             $options__db = [
