@@ -24,10 +24,10 @@ use App\Table\UserTable;
 
 require_once('./app/table/UserTable.php');
 $myUser = new UserTable();
-$myUser->insert('ahmet3@gmail.com', 'aa11', false);
-//$myUser->updatePassword('12345', 14);
-//$myUser->delete(14);
-//$myUser->updateAdmin(14, false);
+$myUser->insert('ahmet4@gmail.com', 'aa11', false);
+$myUser->updatePassword('12345', 28);
+$myUser->delete(23);
+$myUser->updateAdmin(28, true);
 ?>
 
 <div class="container pt-3">
