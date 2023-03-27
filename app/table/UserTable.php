@@ -1,5 +1,7 @@
 <?php
-
+/*
+By Erik Koop
+*/
 namespace App\Table;
 use Table\Database\QueryProvider;
 require_once('./app/table/QueryProvider.php');
@@ -40,8 +42,7 @@ class UserTable extends QueryProvider
    $updateQuery = 'UPDATE users SET password = :password WHERE id = :id';
    $arrayUpdateBindValue = [':password'=> $password, ':id'=>$id];
    $this->updateQuery($updateQuery,$arrayUpdateBindValue);
-   return false;
-      
+   return false;   
    }
 
    public function updateAdmin(int $id, bool $isAdmin): bool
