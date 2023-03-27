@@ -1,4 +1,7 @@
 <?php
+/*
+* By Stefan Schumacher
+*/
 namespace App\Table;
 use Table\Database\QueryProvider;
 require_once('./app/table/QueryProvider.php');
