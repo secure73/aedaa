@@ -15,11 +15,11 @@ class UserTable
 
    //php class constructor
    
-   public function insert(string $email, string $password, bool $isAdmin): int
+   public function insert(string $email, string $password, bool $isAdmin = false): int
    {require_once('./app/table/QueryProvider.php');
       $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
       $arrayBind = [':email'=>$email,':password'=>$password,':isAdmin'=>$isAdmin];
-      $userId = $qp->insertQuery($sqlQuery,$arrayBind);
+      $qp->insertQuery($sqlQuery,$arrayBind);
 
       return 1;
    }
@@ -31,14 +31,17 @@ class UserTable
 
       return 1;
    }
-   public function delete(int $id, ): bool
-   { $qp = new QueryProvider();
-      $deleteQuery = 'DELETE FROM users WHERE id = :$id';
+   public function deleteById(int $id) :int|null
+   { 
+      $qp = new QueryProvider();
+      $deleteQuery = 'DELETE FROM users WHERE id = :id';
       $arrayBindDelete = [$id];   
-      $qp->deleteQuery($deleteQuery,$arrayBindDelete);
-      return false;
-   }
-   public function updatePassword(string $email,string $password): bool
+      return $qp->deleteQuery($deleteQuery,$arrayBindDelete);
+      }
+
+
+   public function updatePassword(string $email,string $password):int|null 
+
    {  $qp = new QueryProvider();
       $updateQuery = 'UPDATE users SET password = :password WHERE email= :email';
       $arrayUpdateBindValue = [':email'=>$email, ':password' => $password];
