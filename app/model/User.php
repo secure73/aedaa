@@ -1,69 +1,87 @@
 <?php
-namespace App;
 
-class User {
-    public int $id;
-    public string $email;
-    public string $password;
-    // when we habe boolean type variable, please use "is" before the variableName 
-    public bool $isAdmin;
+namespace App\Model;
 
-    //php class constructor
+use App\Table\UserTable;
+
+require_once('./app/table/UserTable.php');
+class User extends UserTable
+{
     public function __construct()
     {
-        
-    }
-
-    /**
-     * @return int in case of success return last inserted id from creatd User
-     * @return false in case of unseccessfull creation return false
-     */
-    public function create(string $email , string $password):int|false
-    {
-        return false;
+        parent::__construct();
     }
 
 
-    public function makeUserAdmin(string $email):bool
-    {
-        return false;
-    }
+public function register(string $email, string $password): int|null
+{
+    $password = $this->hashPassword($password);
+    return $this->insert($email, $password, false);
+}
 
-    public function removeAdmin(string $email):bool
-    {
-        return false;
-    }
-    /**
-     * @return User if user existed
-     * @return false if user cannot be found, or email dosent existed in out Database
-     */
-    public function findUserByEmail(string $email):User|false
-    {
-        return false;
-    }
+/**return int in case of success
+*return falsw in case of unsuccess
+**/
+public function create(string $email, string $password): int
+{
+    return 1;
+}
 
-    
-    public function login(string $email , string $password):bool
-    {
-        return false;
-    }
+public function makeUserAdmin(string $email): bool
+{
+    return false;
+}
 
-    public function logout():void
-    {
+public function removeAdmin(string $email): bool
+{
+    return false;
+}
 
-    }
+/**
+ * return user if User existed
+ * return false if User cannot be found, or email dosent existed
+ * **/
+public function findUserByEmail(string  $email): User|false
+{
+    return false;
+}
 
-    /**
-     *@return array<User> can ne array of null
-     */	
-    public function getUsers():array
-    {
-        $arrayUsers =[];
-        //code to get all users from database
-        return $arrayUsers;
-    }
+public function login(string $email, string $password): bool
+{
+    return false;
+}
+
+public function logout(): void
+{
+}
+/**
+ * @return array<User> can be aray of null
+ */
+public function getUsers(): array
+{
+    $arrayUsers = [];
+    //code to get all users from database
+    return $arrayUsers;
+}
 
 
+private function hashPassword($password): string
+{
+    $options = [
+      'memory_cost' => 2048,
+      'time_cost' => 4,
+      'threads' => 2
+    ];
+    $hash = password_hash($password, PASSWORD_ARGON2ID, $options);
+    return $hash;
+}
 
-
+  private function verifyPassword(string $password, string $hash): bool
+  {
+      if (password_verify($password, $hash)) {
+          return true;
+      } else {
+          return false;
+      }
+  }
 }
