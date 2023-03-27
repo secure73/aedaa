@@ -13,18 +13,10 @@ class User extends UserTable
     }
 
 
-public function register(string $email, string $password): int|null
+public function create(string $email, string $password): int|null
 {
     $password = $this->hashPassword($password);
     return $this->insert($email, $password, false);
-}
-
-/**return int in case of success
-*return falsw in case of unsuccess
-**/
-public function create(string $email, string $password): int
-{
-    return 1;
 }
 
 public function makeUserAdmin(string $email): bool
