@@ -1,8 +1,12 @@
 <?php
-
+/*
+* By Stefan Schumacher
+*/
 namespace App\Table;
+use Table\Database\QueryProvider;
+require_once('./app/table/QueryProvider.php');
 
-class UserTable
+class UserTable extends QueryProvider
 {
 
    public int $id;
@@ -12,22 +16,45 @@ class UserTable
    public bool $isAdmin;
 
    //php class constructor
-   
-   public function insert(string $email, string $password): int
+
+   public function __construct()
    {
-      return 1;
-   }
-   public function delete(string $email, string $password): bool
-   {
-      return false;
-   }
-   public function updatePassword(string $password): bool
-   {
-      return false;
+      parent::__construct();
    }
 
-   public function updateAdmin(bool $isAdmin): bool
+
+   public function selectByEmail(string $email)
    {
-      return false;
+      $sqlQuery = 'SELECT * FROM users WHERE email = :email';
+      $arrayBind = [':email'=>$email];
+      return $this->selectQuery($sqlQuery,$arrayBind);
+   }
+   
+   public function insert(string $email, string $password , bool $isAdmin = false):int|null
+   {
+      $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
+      $arrayBind = [':email'=> $email,':password'=>$password,':isAdmin'=>$isAdmin];
+      return $this->insertQuery($sqlQuery,$arrayBind);
+   }
+
+   public function deleteById(int $id): int|null
+   {
+      $deleteQuery = 'DELETE FROM users WHERE id = :id';
+      $arrayBindDelete = [':id'=>$id];
+      return $this->deleteQuery($deleteQuery,$arrayBindDelete);
+   }
+
+   public function updatePasswordByEmail(string $email,string $password):int|null
+   {      
+    $updateQuery = 'UPDATE users SET password = :password WHERE email = :email';    
+    $arrayUpdateBindValue = [':password' => $password, ':email' => $email];
+    return $this->updateQuery($updateQuery,$arrayUpdateBindValue); 
+   }
+
+   public function updateAdminStatusByEmail(string $email, bool $isAdmin):int|null
+      {
+      $updateQuery = 'UPDATE users SET isAdmin = :isAdmin WHERE email = :email';
+      $arrayUpdateBindValue = [':email'=> $email , ':isAdmin' => $isAdmin];
+       return $this->updateQuery($updateQuery,$arrayUpdateBindValue);
    }
 }
