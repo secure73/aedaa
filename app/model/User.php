@@ -16,12 +16,11 @@ class User extends UserTable
 
 
 public function register(string $email, string $password): int|null
+
 {
     $password = $this->hashPassword($password);
     return $this->insert($email, $password, false);
 }
-        parent::__construct();
-    }
 
 /**return int in case of success
 *return falsw in case of unsuccess
