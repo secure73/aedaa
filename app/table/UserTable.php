@@ -36,7 +36,6 @@ class UserTable extends QueryProvider
          $this->convertSelectResultToObject($result[0]);
          return $this;
       }
-      echo "user with this email dosent exists";
       return null;
    }
    

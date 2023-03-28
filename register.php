@@ -1,16 +1,25 @@
 <?php
 
-use App\Controller\RegisterController;
+use App\View\RegisterView;
+
 include('./template/navbar.php'); 
-require_once('./app/controller/RegisterController.php');
- $register = new RegisterController();
- $register->register();
+require_once('./app/view/RegisterView.php');
+ $registerView = new RegisterView();
+ $registerView->validateUserPost();
+ $userExist = $registerView->checkIfUserExisted();
+ if(!$userExist)
+ {
+  $registerView->register();
+ }
 ?>
 
 <h1>Register</h1>
 <div class="card flex m-5 p-5 bg-secondary">
+
 <form  method="post" target="_self">
+<?=$registerView->component?>
   <div class="form-group">
+
     <label for="exampleInputEmail1">Email address</label>
     <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
