@@ -1,5 +1,6 @@
 <?php include('./template/navbar.php'); ?>
 
+<<<<<<< HEAD
 <h1>admin</h1>
 <div class="card flex m-5 p-5 bg-secondary">
 <form>
@@ -20,4 +21,12 @@
 </div>
 
 
+=======
+<div class="container pt-3">
+    <h3>Welcome Admin</h3>
+</div>
+
+
+
+>>>>>>> dev
 <?php include('./template/footer.php'); ?>
