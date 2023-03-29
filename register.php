@@ -1,18 +1,39 @@
+<<<<<<< HEAD
 <?php include('./template/navbar.php'); ?>
 <br>
 <br>
 <br>
+=======
+<?php
+
+use App\View\RegisterView;
+
+include('./template/navbar.php'); 
+require_once('./app/view/RegisterView.php');
+ $registerView = new RegisterView();
+ $registerView->validateUserPost();
+ $userExist = $registerView->checkIfUserExisted();
+ if(!$userExist)
+ {
+  $registerView->register();
+ }
+?>
+
+>>>>>>> 37bb111531b138d52625c787b4a9604a9c32cb6b
 <h1>Register</h1>
 <div class="card flex m-5 p-5 bg-secondary">
-<form>
+
+<form  method="post" target="_self">
+<?=$registerView->component?>
   <div class="form-group">
+
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input  name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" minlength="4">
   </div>
 
   <br>

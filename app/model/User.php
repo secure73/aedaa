@@ -1,26 +1,22 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
-class User
+use App\Table\UserTable;
+
+require_once('./app/table/UserTable.php');
+class User extends UserTable
 {
-    public int $id;
-    public string $email;
-    public string $password;
-    // when we have boolean var, please use "is" before variable
-    public bool $isAdmin;
-
-    //php class constructor
     public function __construct()
     {
+        parent::__construct();
     }
 
-/**return int in case of success
-*return falsw in case of unsuccess
-**/
-public function create(string $email, string $password): int
+
+public function create(string $email, string $password): int|null
 {
-    return 1;
+    $password = $this->hashPassword($password);
+    return $this->insert($email, $password, false);
 }
 
 public function makeUserAdmin(string $email): bool
@@ -59,4 +55,25 @@ public function getUsers(): array
     //code to get all users from database
     return $arrayUsers;
 }
+
+
+private function hashPassword($password): string
+{
+    $options = [
+      'memory_cost' => 2048,
+      'time_cost' => 4,
+      'threads' => 2
+    ];
+    $hash = password_hash($password, PASSWORD_ARGON2ID, $options);
+    return $hash;
+}
+
+  private function verifyPassword(string $password, string $hash): bool
+  {
+      if (password_verify($password, $hash)) {
+          return true;
+      } else {
+          return false;
+      }
+  }
 }
